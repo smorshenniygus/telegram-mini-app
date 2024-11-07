@@ -1,16 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Telegram Mini App</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="utf-8">
+  <title>Integrate Spline 3D Element</title>
+  <style>
+    /* Ensure the canvas fills the viewport */
+    body, html { margin: 0; padding: 0; overflow: hidden; }
+    #canvas3d { width: 100vw; height: 100vh; display: block; }
+  </style>
 </head>
 <body>
-    <h1>Welcome to Telegram Mini App</h1>
-    <p>The current date and time is:</p>
-    <p id="datetime"></p>
-    <button id="changeColorBtn">Change Background Color</button>
-    <!-- Include JavaScript file -->
-    <script src="script.js"></script>
+  <!-- Canvas element where the 3D scene will be rendered -->
+  <canvas id="canvas3d"></canvas>
+
+  <script src="https://unpkg.com/@splinetool/runtime@latest/build/loader.js"></script>
+
+  <!-- Include the Spline runtime library -->
+  <script src="https://unpkg.com/@splinetool/runtime@latest/build/spline.runtime.js"></script>
+
+  <!-- Your JavaScript code to load the scene -->
+  <script>
+    const canvas = document.getElementById('canvas3d');
+    const app = new Spline.Application(canvas);
+    app.load('https://prod.spline.design/Dy8KY7-pkdgu0gYK/scene.splinecode').then(() => {
+      console.log('Scene loaded successfully.');
+    }).catch((error) => {
+      console.error('Error loading the scene:', error);
+    });
+  </script>
 </body>
 </html>
